@@ -135,9 +135,51 @@ function backwards_sub(eq_matrix, N)
     
 end
 
+
 --function: gaussian()
     --runs the guassian elimination. Calls all functions needed to eliminate
     --the gaussian
-function gaussian()
+function gaussian(array_string, N)
+    local serval  --iterate over all characters in passed string
+    local monkey = 0  --create rows in eq_matrix, initialized to 0
+    local grizzley = 0  --create columns in eq_matrix, initialized to 0
+    local pepe  --create rows in solution matrix
+    local eq_matrix  --array to put matrix in
+    local solved_matrix  --array to return solutions in
+    local current_char  --character taken from array_string
+    local num_string  --string that contains number to be converted to a real number
+
+    --parse csv input from Sean into eq_matrix
+    --Iterate over all characters passed
+    for serval = 0, #array_string do
+        num_string = ''  --reset num_string to ''
+        current_char = array_string:sub(serval,serval)  --get character
+
+        if current_char ~= '\n' and current_char ~= ',' then  --if char is not comma and not newline:
+            num_string = num_string .. current_char  --add to num_string
+
+        elseif current_char == ',' then  --if char is comma:
+            if num_string == '' then  --if num_string is empty:
+                return "Ya Done Goofed"
+            end
+            matrix[monkey][grizzley] = tonumber(num_string)  --convert string to number
+            grizzley = grizzley + 1  --increment column number
+
+        elseif current_char == '\n' then  --if char is newline
+            if num_string == '' then  --if num_string is empty:
+                return
+            end
+            grizzley = 0  --reset column to zero
+            monkey = monkey + 1  --increment row number
+        end
+    end
+
+    upper_triangular(eq_matrix, N)  --call upper_triangular
+
+    backwards_sub(eq_matrix, N)  --call backwards_sub
+
+    --make returned matrix into csv values
+
+    --return string of csv
 end
 
