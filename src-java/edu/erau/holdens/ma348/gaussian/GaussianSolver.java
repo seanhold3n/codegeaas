@@ -109,7 +109,7 @@ public class GaussianSolver {
 		// Iterate over equations
 		for (int i = N_ROWS-1; i >= 0; i--) {
 			x[i] = a[i][N_COLS-1];
-			System.out.println(x[i]);
+//			System.out.println(x[i]);
 			// Iterate backwards over each element on the corresponding row of the upper-triangle matrix
 			for (int j = N_COLS-2; j > i; j--) {
 //				System.out.printf("%.2f ", a[i][j]);
@@ -119,12 +119,12 @@ public class GaussianSolver {
 				x[i] -= a[i][j]*x[j];
 			}
 //			System.out.println();
-			System.out.printf("Doing %.2f / %.2f%n", x[i], a[i][i]);
+//			System.out.printf("Doing %.2f / %.2f%n", x[i], a[i][i]);
 			x[i] /= a[i][i];
 			
 		}
 		
-		System.out.println(Arrays.toString(x));
+//		System.out.println(Arrays.toString(x));
 		
 		return x;
 	}
