@@ -18,12 +18,10 @@ def api():
         return redirect(url_for('api_about'))
     else:
         # Get input array
-        reqArray = np.array([[1,-1,3,-3],[-1,0,-2,1],[2,2,4,0]])
-
-        print(np.array_str(reqArray))
-
-        #test
-        reqArray = np.fromstring(request.data)
+        #reqArray = np.array([[1,-1,3,-3],[-1,0,-2,1],[2,2,4,0]])
+        #reqArray = np.fromstring(request.data)
+        regArray = np.genfromtxt(StringIO(request.data), delimiter=',')
+        print(np.array_str(regArray))
 
         # Do Gaussian things
         # TODO
