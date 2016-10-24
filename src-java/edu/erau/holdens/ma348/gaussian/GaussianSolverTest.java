@@ -76,6 +76,7 @@ public class GaussianSolverTest {
 	}
 
 	@Test
+	@Ignore
 	public void testBackSub() {
 		// Upper-triangle matrix
 		double[][] a = {{1,2,1,5},
